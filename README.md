@@ -36,7 +36,7 @@ Interfaaces
 | Gestion du personnel | Liste des personnels + ajout / moddification / suppression + accès aux absences. |
 | Gestion des absences | Liste des absences d'un personnel (de la plus rcéente à la plus ancienne) + ajout / modification / suppression. |
 
-![Fenêtre d'autehntification](docs/intefrace-authentification.png)
+![Fenêtre d'autehntification](docs/interface-authentification.png)
 ![Gestion du personnel](docs/interface-personnel.png)
 ![Gestion des absences](docs/interface-absence.png)
 

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MediaTek86 — Application de gestion du personnel | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&family=Spline+Sans+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16201c;
+    --paper:#f4f1e9;
+    --paper-2:#ece7da;
+    --accent:#b3122a;      /* rouge MediaTek */
+    --accent-2:#1f6f5c;    /* vert canard */
+    --line:#d8d1bf;
+    --muted:#6a6456;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(var(--paper-2) 1px, transparent 1px);
+    background-size:22px 22px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+
+  /* HEADER */
+  header{padding:70px 0 40px;border-bottom:2px solid var(--ink)}
+  .eyebrow{
+    font-family:'Spline Sans Mono',monospace;
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--accent);font-weight:600;
+  }
+  h1{
+    font-family:'Fraunces',serif;font-weight:900;
+    font-size:clamp(2.6rem,7vw,5rem);line-height:.96;
+    letter-spacing:-.02em;margin:18px 0 10px;
+  }
+  h1 em{font-style:italic;color:var(--accent)}
+  .subtitle{font-size:1.12rem;color:var(--muted);max-width:60ch}
+  .meta{
+    display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:28px;
+    font-family:'Spline Sans Mono',monospace;font-size:.8rem;color:var(--ink);
+  }
+  .meta span{display:flex;align-items:center;gap:7px}
+  .meta b{color:var(--accent-2)}
+
+  /* SECTION TITLES */
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .sec-num{
+    font-family:'Spline Sans Mono',monospace;font-size:.75rem;
+    color:var(--accent);letter-spacing:.2em;
+  }
+  h2{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:clamp(1.7rem,4vw,2.4rem);letter-spacing:-.01em;
+    margin:6px 0 22px;
+  }
+  p{max-width:68ch;margin-bottom:14px;color:#2c322d}
+
+  /* CARDS / LINKS */
+  .links{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:10px}
+  .card{
+    display:block;text-decoration:none;color:var(--ink);
+    border:1.5px solid var(--ink);border-radius:3px;padding:22px 22px 20px;
+    background:var(--paper);transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink);background:#fff}
+  .card .k{font-family:'Spline Sans Mono',monospace;font-size:.7rem;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}
+  .card .t{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;margin:10px 0 4px}
+  .card .d{font-size:.88rem;color:var(--muted)}
+  .card .arrow{position:absolute;top:18px;right:18px;font-size:1rem;color:var(--accent)}
+
+  /* FEATURE LIST */
+  ul.feats{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 28px;margin-top:8px}
+  ul.feats li{padding-left:26px;position:relative;font-size:.95rem}
+  ul.feats li::before{content:"→";position:absolute;left:0;color:var(--accent-2);font-family:'Spline Sans Mono',monospace}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .tag{
+    font-family:'Spline Sans Mono',monospace;font-size:.74rem;
+    border:1px solid var(--line);border-radius:30px;padding:5px 13px;color:var(--ink);background:var(--paper-2);
+  }
+
+  /* VIDEO */
+  .video-frame{
+    margin-top:18px;border:1.5px solid var(--ink);border-radius:4px;overflow:hidden;
+    box-shadow:6px 6px 0 var(--ink);background:#000;
+  }
+  .video-frame .ratio{position:relative;width:100%;padding-top:56.25%}
+  .video-frame iframe,.video-frame .placeholder{
+    position:absolute;inset:0;width:100%;height:100%;border:0;
+  }
+  .placeholder{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:linear-gradient(135deg,#1f6f5c,#16201c);color:#f4f1e9;text-align:center;gap:10px;
+    font-family:'Spline Sans Mono',monospace;
+  }
+  .placeholder span{font-size:2.4rem}
+  .note{font-size:.8rem;color:var(--muted);margin-top:10px;font-family:'Spline Sans Mono',monospace}
+
+  /* MCD figure */
+  figure{margin-top:18px;border:1px solid var(--line);border-radius:4px;padding:14px;background:#fff}
+  figure img{width:100%;height:auto;display:block}
+  figcaption{font-size:.8rem;color:var(--muted);margin-top:8px;text-align:center;font-family:'Spline Sans Mono',monospace}
+
+  footer{padding:46px 0 70px;text-align:center;color:var(--muted);font-family:'Spline Sans Mono',monospace;font-size:.78rem}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Atelier 2 · BTS SIO · Développement d'application</div>
+    <h1>MediaTek<em>86</em></h1>
+    <p class="subtitle">Application de bureau pour la gestion du personnel et des absences du réseau des médiathèques de la Vienne.</p>
+    <div class="meta">
+      <span>● <b>Type</b> Windows Forms / C#</span>
+      <span>● <b>Archi</b> MVC + MySQL</span>
+      <span>● <b>Rôle</b> Technicien développeur junior</span>
+    </div>
+  </div>
+</header>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-num">01 — CONTEXTE & MISSION</div>
+    <h2>Le contexte</h2>
+    <p><strong>MediaTek86</strong> est un réseau qui gère les médiathèques de la Vienne&nbsp;: il fédère les prêts de livres, DVD et CD et développe la médiathèque numérique du département. En tant que technicien développeur junior pour l'ESN <em>InfoTech Services 86</em>, il m'a été confié le développement d'une application de bureau <strong>monoposte</strong>, installée au service administratif.</p>
+    <p>Cette application permet au <strong>responsable du personnel</strong> de gérer le personnel de chaque médiathèque, son affectation à un service, ainsi que ses absences. Elle reprend la logique, la structure en packages et la classe de connexion de l'application <em>Habilitations</em>.</p>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-num">02 — FONCTIONNALITÉS</div>
+    <h2>Ce que fait l'application</h2>
+    <ul class="feats">
+      <li>Connexion sécurisée du responsable</li>
+      <li>Lister les personnels</li>
+      <li>Ajouter un personnel</li>
+      <li>Modifier un personnel</li>
+      <li>Supprimer un personnel</li>
+      <li>Afficher les absences</li>
+      <li>Ajouter une absence (sans chevauchement)</li>
+      <li>Modifier une absence (sans chevauchement)</li>
+      <li>Supprimer une absence</li>
+    </ul>
+    <div class="tags">
+      <span class="tag">C#</span>
+      <span class="tag">.NET Framework 4.7.2</span>
+      <span class="tag">Windows Forms</span>
+      <span class="tag">MySQL</span>
+      <span class="tag">MVC</span>
+      <span class="tag">SHA2 / mot de passe chiffré</span>
+      <span class="tag">Git / GitHub</span>
+    </div>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-num">03 — BASE DE DONNÉES</div>
+    <h2>Modèle Conceptuel de Données</h2>
+    <p>La base <code>mediatek86</code> repose sur cinq tables&nbsp;: <code>service</code>, <code>motif</code>, <code>personnel</code>, <code>absence</code> et <code>responsable</code> (connexion à l'application).</p>
+    <figure>
+      <img src="mcd.png" alt="Modèle Conceptuel de Données MediaTek86">
+      <figcaption>MCD du réseau MediaTek86</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-num">04 — LIVRABLES</div>
+    <h2>Tout le projet</h2>
+    <div class="links">
+      <a class="card" href="https://github.com/Myriam199/MediaTek86" target="_blank" rel="noopener">
+        <span class="arrow">↗</span>
+        <div class="k">Dépôt distant</div>
+        <div class="t">Code source GitHub</div>
+        <div class="d">Étapes de sauvegarde, zip de la doc technique et script SQL complet de la BDD.</div>
+      </a>
+      <a class="card" href="compte-rendu-activite.pdf" target="_blank" rel="noopener">
+        <span class="arrow">↗</span>
+        <div class="k">PDF</div>
+        <div class="t">Compte rendu d'activité</div>
+        <div class="d">Déroulé de la mission, étapes, difficultés et compétences mobilisées.</div>
+      </a>
+      <a class="card" href="https://github.com/Myriam199/MediaTek86/blob/main/README.md" target="_blank" rel="noopener">
+        <span class="arrow">↗</span>
+        <div class="k">Readme</div>
+        <div class="t">Documentation du dépôt</div>
+        <div class="d">Contexte, MCD, interfaces, diagramme de paquetages, commits, installation.</div>
+      </a>
+    </div>
+    
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="wrap">
+    <div class="sec-num">05 — DÉMONSTRATION</div>
+    <h2>Vidéo de présentation</h2>
+    <p>Documentation utilisateur sous forme de vidéo (5&nbsp;minutes)&nbsp;: démonstration de toutes les fonctionnalités de l'application avec explications orales.</p>
+    <div class="video-frame">
+      <div class="ratio">
+        
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Démonstration MediaTek86" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    MediaTek86 — Application de gestion du personnel · BTS SIO option SLAM · InfoTech Services 86
+  </div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver((ents)=>{
+    ents.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>

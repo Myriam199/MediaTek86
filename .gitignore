@@ -1,0 +1,18 @@
+# Dossiers de build Visual Studio
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+.vs/
+packages/
+
+# Fichiers utilisateur
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Resultats de build
+*.dll
+*.pdb
+*.cache

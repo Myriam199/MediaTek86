@@ -109,5 +109,5 @@ Architecture MVC
 
 Documentation
 
-Documentation technique : générée à partir des commmentaires normalisés du code, archivée dans dcos/documentation-technique.zip.
+-Documentation technique: voir [docs/DOCUMENTATION_TECHNIQUE.md](docs/DOCUMENTATION_TECHNIQUE.md)
 Docmuentation utilisateur : vidéo de démonstration (lien dans la page du porttfolio).
